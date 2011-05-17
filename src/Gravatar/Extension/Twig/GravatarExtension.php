@@ -23,7 +23,7 @@ class GravatarExtension extends \Twig_Extension
     {
         return array(
             'gravatar'          => new \Twig_Function_Method($this, 'get'),
-            'gravatar_exists'   => new \Twig_Function_Method($this, 'exists'),
+            'gravatar_exist'    => new \Twig_Function_Method($this, 'exist'),
         );
     }
     
@@ -43,9 +43,9 @@ class GravatarExtension extends \Twig_Extension
      * @param string $email
      * @return boolean
      */
-    public function exists($email)
+    public function exist($email)
     {
-        return $this->service->exists($email);
+        return $this->service->exist($email);
     }
 
     /**
