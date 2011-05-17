@@ -84,8 +84,7 @@ class Service
         'rating' => self::RATING_G,
         'secure' => false,
         'default'   => null,
-        'force_default' => false,
-        'cache_ttl' => 0
+        'force_default' => false
     );
     
     /**
@@ -118,7 +117,7 @@ class Service
             's' => $options['size'],
             'd' => $options['default'],
             'r' => $options['rating'],
-            'f' => $options['force_default']
+            'f' => ($options['force_default'] == true) ? 'y' : null
         );
         
         $url  = vsprintf(self::URL, array($options['secure'] ? 'https' : 'http', $hash));
