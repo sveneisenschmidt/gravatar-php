@@ -2,6 +2,8 @@
 
 namespace Gravatar;
 
+use Gravatar\Cache\CacheInterface;
+
 /**
  * @see http://de.gravatar.com/site/implement/images/
  */
@@ -93,13 +95,19 @@ class Service
     protected $options = array();
     
     /**
+     * @var Gravatar\Cache\CacheInterface
+     */
+    protected $cache = null;
+    
+    /**
      *
      * @param array $options
      * @return void
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = array(), CacheInterface $cache = null)
     {
         $this->options = array_merge($this->defaults, $options);
+        $this->cache   = $cache;
     }
     
     /**
@@ -135,14 +143,24 @@ class Service
      */
     public function exist($email)
     {
-        $url   = $this->get($email, array('default' => self::DEFAULT_404));
+        $url  = $this->get($email, array('default' => self::DEFAULT_404));
+        $hash = sha1($url);
+
+        if(!is_null($this->cache) && $this->cache->has($hash)) {
+            return (bool)$this->cache->get($hash);
+        }
 
         $sock = fsockopen('gravatar.com', 80, $errorNo, $error);
         fputs($sock, "HEAD " . $url . " HTTP/1.0\r\n\r\n");
         $header = fgets($sock, 128);
         fclose($sock);
 
-        return  trim($header) == 'HTTP/1.1 404 Not Found' ? false : true;
+        $has = trim($header) == 'HTTP/1.1 404 Not Found' ? false : true;
+        if(!is_null($this->cache)) {
+            $this->cache->set($hash, $has);
+        }
+
+        return $has;
     }
     
     /**
