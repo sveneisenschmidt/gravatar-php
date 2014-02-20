@@ -46,7 +46,7 @@ class Service
      * 
      * @const
      */
-    const RATING_X = 'pg';
+    const RATING_X = 'x';
     
     /**
      * @const
