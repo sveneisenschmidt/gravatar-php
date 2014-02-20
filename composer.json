@@ -1,16 +1,14 @@
 {
-    "name": "fate/gravatar-php",
+    "name": "se/gravatar-php",
     "description": "PHP 5.3 Library for Gravatar (gravatar.com)",
     "keywords": ["gravatar"],
-    "homepage": "https://github.com/fate/Gravatar-php",
+    "homepage": "https://github.com/sveneisenschmidt/Gravatar-php",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
     "authors": [
     {
         "name": "Sven Eisenschmidt",
-        "email": "sven.eisenschmidt@gmail.com",
-        "homepage": "http://unsicherheitsagent.de/"
+        "email": "sven.eisenschmidt@gmail.com"
     }
     ],
     "autoload": {
