@@ -22,8 +22,8 @@ class GravatarExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'gravatar'          => new \Twig_Function_Method($this, 'get'),
-            'gravatar_exist'    => new \Twig_Function_Method($this, 'exist'),
+            'gravatar'          => new \Twig_Function('gravatar', array($this, 'get'), array('is_safe' => array('html'))),
+            'gravatar_exist'    => new \Twig_Function('gravatar_exist', array($this, 'exist')),
         );
     }
     
