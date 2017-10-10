@@ -1,20 +1,27 @@
 {
     "name": "se/gravatar-php",
-    "description": "PHP 5.3 Library for Gravatar (gravatar.com)",
+    "description": "PHP library for generating Gravatar urls (gravatar.com)",
     "keywords": ["gravatar"],
     "homepage": "https://github.com/sveneisenschmidt/gravatar-php",
     "type": "library",
     "license": "MIT",
     "authors": [
-    {
-        "name": "Sven Eisenschmidt",
-        "email": "sven.eisenschmidt@gmail.com"
-    }
+        {
+            "name": "Sven Eisenschmidt",
+            "email": "sven.eisenschmidt@gmail.com"
+        },
+        {
+            "name": "Michael Heap",
+            "email": "m@michaelheap.com"
+        }
     ],
     "autoload": {
         "psr-0": { 
             "Gravatar": "src"
         }
+    },
+    "require": {
+        "php": "^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
