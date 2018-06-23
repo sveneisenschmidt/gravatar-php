@@ -4,7 +4,9 @@ namespace Gravatar\Tests;
 
 use Gravatar\Service;
 
-class ServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ServiceTest extends TestCase
 {
     public function testServiceUrl()
     {

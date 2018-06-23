@@ -16,15 +16,20 @@
         }
     ],
     "autoload": {
-        "psr-0": { 
-            "Gravatar": "src"
+        "psr-4": { 
+            "Gravatar\\": "src/Gravatar"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gravatar\\Tests\\": "tests"
         }
     },
     "require": {
         "php": "^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
+        "phpunit/phpunit": "^6.5",
         "twig/twig": "^2.4"
     }
 }
