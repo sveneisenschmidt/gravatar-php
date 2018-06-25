@@ -8,13 +8,17 @@ use Gravatar\Extension\Twig\GravatarExtension;
 use Twig_Environment;
 use Twig_Loader_Array;
 
-class TwigExtensionTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TwigExtensionTest extends TestCase
 {
     public function testRegisterExtension()
     {
         $twig = new Twig_Environment(new Twig_Loader_Array(array()));
         $gravatarService = new Service();
         $twig->addExtension(new GravatarExtension($gravatarService));
+
+        $this->assertInstanceOf(GravatarExtension::class, $twig->getExtension(GravatarExtension::class));
     }
 
     public function testRenderGravatarUrl()
