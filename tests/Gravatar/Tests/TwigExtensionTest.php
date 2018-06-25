@@ -12,11 +12,13 @@ use PHPUnit\Framework\TestCase;
 
 class TwigExtensionTest extends TestCase
 {
-    public function registerExtension()
+    public function testRegisterExtension()
     {
         $twig = new Twig_Environment(new Twig_Loader_Array(array()));
         $gravatarService = new Service();
         $twig->addExtension(new GravatarExtension($gravatarService));
+
+        $this->assertInstanceOf(GravatarExtension::class, $twig->getExtension(GravatarExtension::class));
     }
 
     public function testRenderGravatarUrl()
